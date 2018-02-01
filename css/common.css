@@ -1,0 +1,464 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+button {
+  border: none;
+  background: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  perspective: 5000px;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scaleToShow {
+  0% {
+    opacity: 0;
+    background-size: 5.15625rem 3.75rem;
+  }
+  10% {
+    opacity: 1;
+    background-size: 4.984375rem 3.625rem;
+  }
+  50% {
+    opacity: 1;
+    background-size: 4.296875rem 3.125rem;
+  }
+  100% {
+    opacity: 1;
+    background-size: 3.4375rem 2.5rem;
+  }
+}
+@keyframes opacityIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes opacityOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes flipBook {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(-160deg);
+  }
+  100% {
+    transform: rotateY(-180deg);
+  }
+}
+@keyframes flipBookBack {
+  0% {
+    transform: rotateY(-180deg);
+  }
+  50% {
+    transform: rotateY(-20deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+.preserve-3d {
+  /*transform-style属性指定了，该元素的子元素是（看起来）位于三维空间内，还是在该元素所在的平面内被扁平化。*/
+  transform-style: preserve-3d;
+}
+.index-change .first-scene-camera {
+  animation: opacityOut 0.3s linear 0.3s 1;
+  animation-fill-mode: both;
+}
+.index-change .page {
+  transform-origin: 0 50%;
+  transform: rotateY(0deg);
+  animation: flipBook 2s linear 0.3s 1;
+  animation-fill-mode: both;
+}
+.page-change .page {
+  transform-origin: 0 50%;
+  animation: flipBook 2s linear 0.3s 1;
+  animation-fill-mode: both;
+}
+.index-back .first-scene-camera {
+  animation: opacityIn 0.3s linear 0.3s 1;
+  animation-fill-mode: both;
+}
+.index-back .page {
+  transform-origin: 0 50%;
+  transform: rotateY(0deg);
+  animation: flipBookBack 2s linear 0.3s 1;
+  animation-fill-mode: both;
+}
+.page-back .page {
+  transform-origin: 0 50%;
+  animation: flipBookBack 2s linear 0.3s 1;
+  animation-fill-mode: both;
+}
+.canvas-seal-do-change {
+  animation: scaleToShow 1s linear 0s 1;
+  animation-fill-mode: both;
+  transform: translateZ(8000px);
+}
+.scene-do-change {
+  animation: opacityIn 2s linear 0s 1;
+  animation-fill-mode: both;
+  transform: translateZ(100px);
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: url('../img/direction-bg.png');
+  background-size: 100% 100%;
+}
+.loading-logo {
+  display: block;
+  width: 1.875rem;
+  height: 2.03125rem;
+  background: url('../img/direction.png');
+  background-size: 100% 100%;
+}
+.loading-tip {
+  width: 100%;
+  font-size: 0.40625rem;
+  text-align: center;
+  padding: 0.46875rem 0;
+  color: #ffffff;
+  letter-spacing: 0.0625rem;
+}
+.loading-hidden {
+  display: none;
+}
+.scene-container {
+  width: 100%;
+  height: 100%;
+  background: url('../img/content-bg.png');
+  background-size: 100% 100%;
+}
+.scene-container .scene {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url('../img/index-bg.png');
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.scene-container .scene-background-hidden {
+  background: none;
+}
+.scene-container .scene-change {
+  position: absolute;
+  opacity: 0;
+  width: 0.546875rem;
+  height: 0.5625rem;
+  background: url('../img/change-btn.png');
+  background-size: 100% 100%;
+  right: 1.5625rem;
+  bottom: 0.515625rem;
+  z-index: 999;
+  transform: translateZ(100px);
+}
+.scene-container .music {
+  position: absolute;
+  z-index: 999;
+  opacity: 1;
+  width: 0.796875rem;
+  height: 0.8125rem;
+  background: url('../img/canvas-1-music.png') no-repeat 0.06875rem 0.0734375rem;
+  background-size: 100% 100%;
+  right: 0.265625rem;
+  top: 0.265625rem;
+}
+.scene-container .music-on {
+  animation: rotate 1s linear 0s infinite;
+}
+.scene-container .canvas-seal {
+  position: absolute;
+  width: 5.15625rem;
+  height: 3.75rem;
+  left: 0;
+  bottom: 0;
+  background: url('../img/canvas-seal.png') no-repeat left bottom;
+  background-size: 3.4375rem 2.5rem;
+  z-index: 999;
+  transform: translateZ(8000px);
+}
+.scene-container .first-scene {
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-container .first-scene-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scene-container .first-scene-canvas {
+  position: relative;
+  width: 9.875rem;
+  height: 6.46875rem;
+  background: url('../img/canvas-1.png');
+  background-size: 100% 100%;
+}
+.scene-container .first-scene-canvas-btn {
+  position: absolute;
+  width: 2.59375rem;
+  height: 0.46875rem;
+  left: 4.171875rem;
+  bottom: 2.125rem;
+  background: url('../img/canvas-1-btn.png');
+  background-size: 100% 100%;
+}
+.scene-container .first-scene-camera {
+  position: absolute;
+  opacity: 1;
+  width: 2.34375rem;
+  height: 2.03125rem;
+  right: 0.1875rem;
+  bottom: 0.09375rem;
+  background: url('../img/canvas-1-camera.png');
+  background-size: 100% 100%;
+}
+.scene-container .second-scene {
+  z-index: 9;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-container .second-scene-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scene-container .second-scene-canvas {
+  width: 9.875rem;
+  height: 6.46875rem;
+  background: url('../img/canvas-2.png');
+  background-size: 100% 100%;
+}
+.scene-container .third-scene {
+  z-index: 8;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-container .third-scene-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scene-container .third-scene-canvas {
+  width: 9.875rem;
+  height: 6.46875rem;
+  background: url('../img/canvas-3.png');
+  background-size: 100% 100%;
+}
+.scene-container .fourth-scene {
+  z-index: 7;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-container .fourth-scene-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scene-container .fourth-scene-canvas {
+  width: 9.875rem;
+  height: 6.46875rem;
+  background: url('../img/canvas-4.png');
+  background-size: 100% 100%;
+}
+.scene-container .fifth-scene {
+  z-index: 6;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-container .fifth-scene-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scene-container .fifth-scene-canvas {
+  width: 9.875rem;
+  height: 6.46875rem;
+  background: url('../img/canvas-5.png');
+  background-size: 100% 100%;
+}
+.scene-container .sixth-scene {
+  z-index: 5;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-container .sixth-scene-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scene-container .sixth-scene-canvas {
+  width: 9.875rem;
+  height: 6.46875rem;
+  background: url('../img/canvas-6.png');
+  background-size: 100% 100%;
+}
+.scene-container .seventh-scene {
+  z-index: 4;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-container .seventh-scene-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scene-container .seventh-scene-canvas {
+  width: 9.875rem;
+  height: 6.46875rem;
+  background: url('../img/canvas-7.png');
+  background-size: 100% 100%;
+}
+.scene-container .eighth-scene {
+  z-index: 3;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-container .eighth-scene-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scene-container .eighth-scene-canvas {
+  width: 9.875rem;
+  height: 6.46875rem;
+  background: url('../img/canvas-8.png');
+  background-size: 100% 100%;
+}
+.eighth-scene-canvas-btn-1 {
+  display: none;
+  position: absolute;
+  width: 2.90625rem;
+  height: 0.578125rem;
+  background: url("../img/canvas-8-btn-1.png");
+  background-size: 100% 100%;
+  bottom: 2.21875rem;
+  left: 50%;
+  margin-left: -1.453125rem;
+  z-index: 999;
+}
+.eighth-scene-canvas-btn-2 {
+  display: none;
+  position: absolute;
+  width: 2.90625rem;
+  height: 0.578125rem;
+  background: url("../img/canvas-8-btn-2.png");
+  background-size: 100% 100%;
+  bottom: 1.375rem;
+  left: 50%;
+  margin-left: -1.453125rem;
+  z-index: 999;
+}
+.mask-container {
+  display: none;
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.mask-container .mask {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.6;
+}
+.mask-container .share {
+  position: absolute;
+  top: 0.1875rem;
+  right: 0.546875rem;
+  width: 2.359375rem;
+  height: 2.53125rem;
+  background: url('../img/share-btn.png');
+  background-size: 100% 100%;
+}
+.btn-show {
+  display: block !important;
+  animation: opacityIn 2s ease-out 1s 1;
+  animation-fill-mode: both;
+}
+.mask-container-show {
+  display: block;
+  animation: opacityIn 1s ease-out 0.3s 1;
+  animation-fill-mode: both;
+}
