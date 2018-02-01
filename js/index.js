@@ -3,6 +3,7 @@ Zepto(function ($) {
         isOn: true,
         currentPage: 0,
         items: {
+            body: $('html'),
             scene: $('#scene'),
             sceneContainer: $('#scene-container'),
             loadingPage: $('#loading'),
@@ -24,20 +25,31 @@ Zepto(function ($) {
             var _this = this;
             $(window).on('resize', function () {
                 var proportion = ($(window).width() / $(window).height()).toFixed(2);
-                console.log(proportion);
                 if (proportion >= 1) {
-                    _this.items.loadingPage.addClass('loading-hidden');
-                    _this.items.sceneContainer.show();
-                } else {
                     _this.items.loadingPage.removeClass('loading-hidden');
                     _this.items.sceneContainer.hide();
+                    _this.items.body.attr('style', '');
+                    _this.bindRowTouchEvent();
+                } else {
+                    _this.items.sceneContainer.show();
+                    _this.items.loadingPage.removeClass('loading-hidden');
+                    _this.items.body.css({
+                        width: $(window).height(),
+                        height: $(window).width(),
+                        position: 'absolute',
+                        top: 0,
+                        left: $(window).width(),
+                        transform: 'rotate(90deg)',
+                        transformOrigin: '0 0',
+                    });
+                    _this.items.loadingPage.addClass('loading-hidden');
+                    _this.bindColTouchEvent();
                 }
             });
             $(window).trigger('resize');
         },
         bindEvent: function () {
             var _this = this;
-            _this.bindTouchEvent();
             _this.bindMaskEvent();
             _this.bindMusicEvent();
         },
@@ -71,7 +83,36 @@ Zepto(function ($) {
                 _this.items.mask.removeClass('mask-container-show');
             });
         },
-        bindTouchEvent: function () {
+        bindColTouchEvent: function () {
+            var _this = this;
+            var startPosition, endPosition, deltaX, deltaY, moveLength;
+            _this.items.scene.bind('touchstart', function(e){
+                deltaX = 0;
+                deltaY = 0;
+                var touch = e.touches[0];
+                startPosition = {
+                    x: touch.pageX,
+                    y: touch.pageY
+                }
+            }) .bind('touchmove', function(e){
+                var touch = e.touches[0];
+                endPosition = {
+                    x: touch.pageX,
+                    y: touch.pageY
+                };
+
+                deltaX = endPosition.x - startPosition.x;
+                deltaY = endPosition.y - startPosition.y;
+                moveLength = Math.sqrt(Math.pow(Math.abs(deltaX), 2) + Math.pow(Math.abs(deltaY), 2));
+            }).bind('touchend', function(e){
+                if(deltaY < -100) {
+                    _this.changeNextPage();
+                } else if (deltaY > 100) {
+                    _this.changePrevPage();
+                }
+            });
+        },
+        bindRowTouchEvent: function () {
             var _this = this;
             var startPosition, endPosition, deltaX, deltaY, moveLength;
             _this.items.scene.bind('touchstart', function(e){
