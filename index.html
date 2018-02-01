@@ -4,71 +4,104 @@
     <meta charset="UTF-8">
     <title>最爱你的人</title>
     <meta name="format-detection" content="telephone=no, email=no"/>
-    <base href="//m.xyz.cn/special/2018/whoilove/"/>
-    <link type="text/css" rel="stylesheet" href="css/common.css?d=1508389811933"/>
+    <link rel="stylesheet" href="css/common.css"/>
     <script type="text/javascript" src="js/zepto.min.js"></script>
     <script type="text/javascript" src="js/flexible.js"></script>
 </head>
 <body>
     <!--横屏检测-->
-    <div class="loading">
+    <div class="loading" id="loading">
         <div class="loading-logo"></div>
         <p class="loading-tip">请旋转您的手机</p>
     </div>
     <!--/横屏检测-->
     <!--场景容器-->
-    <div class="scene-container">
-        <!--场景一-->
-        <div class="first-scene">
-            <div class="first-scene-container">
-                <div class="first-scene-canvas">
-                    <button class="first-scene-canvas-btn"></button>
+    <div class="scene-container preserve-3d" id="scene-container">
+        <!--场景-->
+        <div class="scene preserve-3d" id="scene">
+            <!--场景一-->
+            <div class="first-scene" id="first">
+                <div class="first-scene-container">
+                    <div class="first-scene-canvas page">
+                        <button class="first-scene-canvas-btn" id="start"></button>
+                    </div>
+                    <div class="first-scene-camera"></div>
                 </div>
-                <div class="first-scene-music"></div>
-                <div class="first-scene-camera"></div>
-                <div class="canvas-seal"></div>
             </div>
-        </div>
-        <!--/场景一-->
-        <!--场景二-->
-        <div class="second-scene">
-            <div class="second-scene-container">
-                <div class="second-scene-canvas"></div>
+            <!--场景一-->
+            <!--场景二-->
+            <div class="second-scene" id="second">
+                <div class="second-scene-container">
+                    <div class="second-scene-canvas page"></div>
+                </div>
             </div>
+            <!--/场景二-->
+            <!--场景三-->
+            <div class="third-scene" id="third">
+                <div class="third-scene-container">
+                    <div class="third-scene-canvas page"></div>
+                </div>
+            </div>
+            <!--/场景三-->
+            <!--场景四-->
+            <div class="fourth-scene" id="fourth">
+                <div class="fourth-scene-container">
+                    <div class="fourth-scene-canvas page"></div>
+                </div>
+            </div>
+            <!--/场景四-->
+            <!--场景五-->
+            <div class="fifth-scene" id="fifth">
+                <div class="fifth-scene-container">
+                    <div class="fifth-scene-canvas page"></div>
+                </div>
+            </div>
+            <!--/场景五-->
+            <!--场景六-->
+            <div class="sixth-scene" id="sixth">
+                <div class="sixth-scene-container">
+                    <div class="sixth-scene-canvas page"></div>
+                </div>
+            </div>
+            <!--/场景六-->
+            <!--场景七-->
+            <div class="seventh-scene" id="seventh">
+                <div class="seventh-scene-container">
+                    <div class="seventh-scene-canvas page"></div>
+                </div>
+            </div>
+            <!--/场景七-->
+            <!--场景八-->
+            <div class="eighth-scene" id="eighth">
+                <div class="eighth-scene-container">
+                    <div class="eighth-scene-canvas">
+                    </div>
+                </div>
+            </div>
+            <!--/场景八-->
+            <button class="eighth-scene-canvas-btn-1" id="go-down"></button>
+            <button class="eighth-scene-canvas-btn-2" id="do-it"></button>
+            <!--音乐-->
+            <div class="music" id="music-container">
+                <audio src="./source/music.mp3" autoplay id="music"></audio>
+            </div>
+            <!--/音乐-->
+            <!--印章-->
+            <div class="canvas-seal" id="canvas-seal"></div>
+            <!--/印章-->
+            <!--切换页面-->
+            <div class="scene-change" id="scene-change"></div>
+            <!--/切换页面-->
         </div>
-        <!--/场景二-->
-        <!--场景三-->
-        <div class="third-scene">
-
-        </div>
-        <!--/场景三-->
-        <!--场景四-->
-        <div class="fourth-scene">
-
-        </div>
-        <!--/场景四-->
-        <!--场景五-->
-        <div class="fifth-scene">
-
-        </div>
-        <!--/场景五-->
-        <!--场景六-->
-        <div class="sixth-scene">
-
-        </div>
-        <!--/场景六-->
-        <!--场景七-->
-        <div class="seventh-scene">
-
-        </div>
-        <!--/场景七-->
-        <!--场景八-->
-        <div class="eighth-scene">
-
-        </div>
-        <!--/场景八-->
+        <!--/场景-->
     </div>
     <!--/场景容器-->
+    <!--遮罩层-->
+    <div class="mask-container" id="mask">
+        <div class="mask"></div>
+        <div class="share"></div>
+    </div>
+    <!--/遮罩层-->
     <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
