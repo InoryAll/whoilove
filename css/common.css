@@ -30,19 +30,19 @@ body {
 @keyframes scaleToShow {
   0% {
     opacity: 0;
-    background-size: 5.15625rem 3.75rem;
+    background-size: 7.425rem 5.4rem;
   }
   10% {
     opacity: 1;
-    background-size: 4.984375rem 3.625rem;
+    background-size: 7.1775rem 5.22rem;
   }
   50% {
     opacity: 1;
-    background-size: 4.296875rem 3.125rem;
+    background-size: 6.1875rem 4.5rem;
   }
   100% {
     opacity: 1;
-    background-size: 3.4375rem 2.5rem;
+    background-size: 4.95rem 3.6rem;
   }
 }
 @keyframes opacityIn {
@@ -145,18 +145,18 @@ body {
 }
 .loading-logo {
   display: block;
-  width: 1.875rem;
-  height: 2.03125rem;
+  width: 2.7rem;
+  height: 2.925rem;
   background: url('../img/direction.png');
   background-size: 100% 100%;
 }
 .loading-tip {
   width: 100%;
-  font-size: 0.40625rem;
+  font-size: 0.585rem;
   text-align: center;
-  padding: 0.46875rem 0;
+  padding: 0.675rem 0;
   color: #ffffff;
-  letter-spacing: 0.0625rem;
+  letter-spacing: 0.09rem;
 }
 .loading-hidden {
   display: none;
@@ -182,12 +182,12 @@ body {
 .scene-container .scene-change {
   position: absolute;
   opacity: 0;
-  width: 0.546875rem;
-  height: 0.5625rem;
+  width: 0.7875rem;
+  height: 0.81rem;
   background: url('../img/change-btn.png');
   background-size: 100% 100%;
-  right: 1.5625rem;
-  bottom: 0.515625rem;
+  right: 2.25rem;
+  bottom: 0.7425rem;
   z-index: 999;
   transform: translateZ(100px);
 }
@@ -195,24 +195,25 @@ body {
   position: absolute;
   z-index: 999;
   opacity: 1;
-  width: 0.796875rem;
-  height: 0.8125rem;
-  background: url('../img/canvas-1-music.png') no-repeat 0.06875rem 0.0734375rem;
+  width: 1.1475rem;
+  height: 1.17rem;
+  background: url('../img/canvas-1-music.png') no-repeat 0.099rem 0.10575rem;
   background-size: 100% 100%;
-  right: 0.265625rem;
-  top: 0.265625rem;
+  right: 0.1125rem;
+  top: 0.1125rem;
+  -webkit-tap-highlight-color: transparent;
 }
 .scene-container .music-on {
   animation: rotate 1s linear 0s infinite;
 }
 .scene-container .canvas-seal {
   position: absolute;
-  width: 5.15625rem;
-  height: 3.75rem;
+  width: 7.425rem;
+  height: 5.4rem;
   left: 0;
   bottom: 0;
   background: url('../img/canvas-seal.png') no-repeat left bottom;
-  background-size: 3.4375rem 2.5rem;
+  background-size: 4.95rem 3.6rem;
   z-index: 999;
   transform: translateZ(8000px);
 }
@@ -233,29 +234,31 @@ body {
 }
 .scene-container .first-scene-canvas {
   position: relative;
-  width: 9.875rem;
-  height: 6.46875rem;
+  width: 14.22rem;
+  height: 9.315rem;
   background: url('../img/canvas-1.png');
   background-size: 100% 100%;
 }
 .scene-container .first-scene-canvas-btn {
   position: absolute;
-  width: 2.59375rem;
-  height: 0.46875rem;
-  left: 4.171875rem;
-  bottom: 2.125rem;
+  width: 3.735rem;
+  height: 0.675rem;
+  left: 6.0075rem;
+  bottom: 3.06rem;
   background: url('../img/canvas-1-btn.png');
   background-size: 100% 100%;
 }
 .scene-container .first-scene-camera {
   position: absolute;
+  z-index: 999;
   opacity: 1;
-  width: 2.34375rem;
-  height: 2.03125rem;
-  right: 0.1875rem;
-  bottom: 0.09375rem;
+  width: 3.375rem;
+  height: 2.925rem;
+  right: 0.27rem;
+  bottom: 0.135rem;
   background: url('../img/canvas-1-camera.png');
   background-size: 100% 100%;
+  transform: translateZ(8000px);
 }
 .scene-container .second-scene {
   z-index: 9;
@@ -273,8 +276,8 @@ body {
   align-items: center;
 }
 .scene-container .second-scene-canvas {
-  width: 9.875rem;
-  height: 6.46875rem;
+  width: 14.22rem;
+  height: 9.315rem;
   background: url('../img/canvas-2.png');
   background-size: 100% 100%;
 }
@@ -294,8 +297,8 @@ body {
   align-items: center;
 }
 .scene-container .third-scene-canvas {
-  width: 9.875rem;
-  height: 6.46875rem;
+  width: 14.22rem;
+  height: 9.315rem;
   background: url('../img/canvas-3.png');
   background-size: 100% 100%;
 }
@@ -315,8 +318,8 @@ body {
   align-items: center;
 }
 .scene-container .fourth-scene-canvas {
-  width: 9.875rem;
-  height: 6.46875rem;
+  width: 14.22rem;
+  height: 9.315rem;
   background: url('../img/canvas-4.png');
   background-size: 100% 100%;
 }
@@ -336,8 +339,8 @@ body {
   align-items: center;
 }
 .scene-container .fifth-scene-canvas {
-  width: 9.875rem;
-  height: 6.46875rem;
+  width: 14.22rem;
+  height: 9.315rem;
   background: url('../img/canvas-5.png');
   background-size: 100% 100%;
 }
@@ -357,8 +360,8 @@ body {
   align-items: center;
 }
 .scene-container .sixth-scene-canvas {
-  width: 9.875rem;
-  height: 6.46875rem;
+  width: 14.22rem;
+  height: 9.315rem;
   background: url('../img/canvas-6.png');
   background-size: 100% 100%;
 }
@@ -378,8 +381,8 @@ body {
   align-items: center;
 }
 .scene-container .seventh-scene-canvas {
-  width: 9.875rem;
-  height: 6.46875rem;
+  width: 14.22rem;
+  height: 9.315rem;
   background: url('../img/canvas-7.png');
   background-size: 100% 100%;
 }
@@ -399,33 +402,33 @@ body {
   align-items: center;
 }
 .scene-container .eighth-scene-canvas {
-  width: 9.875rem;
-  height: 6.46875rem;
+  width: 14.22rem;
+  height: 9.315rem;
   background: url('../img/canvas-8.png');
   background-size: 100% 100%;
 }
 .eighth-scene-canvas-btn-1 {
   display: none;
   position: absolute;
-  width: 2.90625rem;
-  height: 0.578125rem;
+  width: 4.185rem;
+  height: 0.8325rem;
   background: url("../img/canvas-8-btn-1.png");
   background-size: 100% 100%;
-  bottom: 2.21875rem;
+  bottom: 3.15rem;
   left: 50%;
-  margin-left: -1.453125rem;
+  margin-left: -2.0925rem;
   z-index: 999;
 }
 .eighth-scene-canvas-btn-2 {
   display: none;
   position: absolute;
-  width: 2.90625rem;
-  height: 0.578125rem;
+  width: 4.185rem;
+  height: 0.8325rem;
   background: url("../img/canvas-8-btn-2.png");
   background-size: 100% 100%;
-  bottom: 1.375rem;
+  bottom: 2.025rem;
   left: 50%;
-  margin-left: -1.453125rem;
+  margin-left: -2.0925rem;
   z-index: 999;
 }
 .mask-container {
@@ -445,10 +448,10 @@ body {
 }
 .mask-container .share {
   position: absolute;
-  top: 0.1875rem;
-  right: 0.546875rem;
-  width: 2.359375rem;
-  height: 2.53125rem;
+  top: 0.27rem;
+  right: 0.7875rem;
+  width: 3.3975rem;
+  height: 3.645rem;
   background: url('../img/share-btn.png');
   background-size: 100% 100%;
 }
@@ -461,4 +464,31 @@ body {
   display: block;
   animation: opacityIn 1s ease-out 0.3s 1;
   animation-fill-mode: both;
+}
+@media screen and (orientation: landscape) {
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: url('../img/direction-bg.png');
+    background-size: 100% 100%;
+  }
+  .loading-logo {
+    display: block;
+    width: 1.875rem;
+    height: 2.03125rem;
+    background: url('../img/direction.png');
+    background-size: 100% 100%;
+  }
+  .loading-tip {
+    width: 100%;
+    font-size: 0.40625rem;
+    text-align: center;
+    padding: 0.46875rem 0;
+    color: #ffffff;
+    letter-spacing: 0.0625rem;
+  }
 }
