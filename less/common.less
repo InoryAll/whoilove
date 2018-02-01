@@ -1,0 +1,489 @@
+@basenumber: 64;
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+button{
+  border: none;
+  background: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  perspective: 5000px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scaleToShow {
+  0% {
+    opacity: 0;
+    background-size: 1.5*220rem/@basenumber 1.5*160rem/@basenumber;
+  }
+  10% {
+    opacity: 1;
+    background-size: 1.45*220rem/@basenumber 1.45*160rem/@basenumber;
+  }
+  50% {
+    opacity: 1;
+    background-size: 1.25*220rem/@basenumber 1.25*160rem/@basenumber;
+  }
+  100%{
+    opacity: 1;
+    background-size: 220rem/@basenumber 160rem/@basenumber;
+  }
+}
+
+@keyframes opacityIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacityOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+@keyframes flipBook {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(-160deg);
+  }
+  100% {
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes flipBookBack {
+  0% {
+    transform: rotateY(-180deg);
+  }
+  50% {
+    transform: rotateY(-20deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+.preserve-3d {
+  /*transform-style属性指定了，该元素的子元素是（看起来）位于三维空间内，还是在该元素所在的平面内被扁平化。*/
+  transform-style: preserve-3d;
+}
+.index-change{
+  .first-scene-camera{
+    animation: opacityOut 0.3s linear 0.3s 1;
+    animation-fill-mode: both;
+  }
+  .page{
+    transform-origin: 0 50%;
+    transform: rotateY(0deg);
+    animation: flipBook 2s linear 0.3s 1;
+    animation-fill-mode: both;
+  }
+}
+.page-change{
+  .page{
+    transform-origin: 0 50%;
+    animation: flipBook 2s linear 0.3s 1;
+    animation-fill-mode: both;
+  }
+}
+.index-back{
+  .first-scene-camera{
+    animation: opacityIn 0.3s linear 0.3s 1;
+    animation-fill-mode: both;
+  }
+  .page{
+    transform-origin: 0 50%;
+    transform: rotateY(0deg);
+    animation: flipBookBack 2s linear 0.3s 1;
+    animation-fill-mode: both;
+  }
+}
+.page-back{
+  .page{
+    transform-origin: 0 50%;
+    animation: flipBookBack 2s linear 0.3s 1;
+    animation-fill-mode: both;
+  }
+}
+.canvas-seal-do-change{
+  animation: scaleToShow 1s linear 0s 1;
+  animation-fill-mode: both;
+  transform:translateZ(8000px);
+}
+.scene-do-change{
+  animation: opacityIn 2s linear 0s 1;
+  animation-fill-mode: both;
+  transform:translateZ(100px);
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: url('../img/direction-bg.png');
+  background-size: 100% 100%;
+  &-logo{
+    display: block;
+    width: 120rem/@basenumber;
+    height: 130rem/@basenumber;
+    background: url('../img/direction.png');
+    background-size: 100% 100%;
+  }
+  &-tip{
+    width: 100%;
+    font-size: 26rem/@basenumber;
+    text-align: center;
+    padding: 30rem/@basenumber 0;
+    color: #ffffff;
+    letter-spacing: 4rem/@basenumber;
+  }
+}
+.loading-hidden{
+  display: none;
+}
+
+.scene-container{
+  width: 100%;
+  height: 100%;
+  background: url('../img/content-bg.png');
+  background-size: 100% 100%;
+  .scene{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: url('../img/index-bg.png');
+    background-size: 100% 100%;
+    overflow: hidden;
+  }
+  .scene-background-hidden{
+    background: none;
+  }
+  .scene-change{
+    position: absolute;
+    opacity: 0;
+    width: 35rem/@basenumber;
+    height: 36rem/@basenumber;
+    background: url('../img/change-btn.png');
+    background-size: 100% 100%;
+    right: 100rem/@basenumber;
+    bottom: 33rem/@basenumber;
+    z-index: 999;
+    transform:translateZ(100px);
+  }
+  .music{
+    position: absolute;
+    z-index: 999;
+    opacity: 1;
+    width: 51rem/@basenumber;
+    height: 52rem/@basenumber;
+    background: url('../img/canvas-1-music.png') no-repeat 4.4rem/@basenumber 4.7rem/@basenumber;
+    background-size: 100% 100%;
+    right: 17rem/@basenumber;
+    top: 17rem/@basenumber;
+  }
+  .music-on{
+    animation: rotate 1s linear 0s infinite;
+  }
+  .canvas-seal{
+    position: absolute;
+    width: 330rem/@basenumber;
+    height: 240rem/@basenumber;
+    left: 0;
+    bottom: 0;
+    background: url('../img/canvas-seal.png') no-repeat left bottom;
+    background-size: 220rem/@basenumber 160rem/@basenumber;
+    z-index: 999;
+    transform:translateZ(8000px);
+  }
+  .first-scene{
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    &-container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-canvas{
+      position: relative;
+      width: 632rem/@basenumber;
+      height: 414rem/@basenumber;
+      background: url('../img/canvas-1.png');
+      background-size: 100% 100%;
+    }
+    &-canvas-btn{
+      position: absolute;
+      width: 166rem/@basenumber;
+      height: 30rem/@basenumber;
+      left: 267rem/@basenumber;
+      bottom: 136rem/@basenumber;
+      background: url('../img/canvas-1-btn.png');
+      background-size: 100% 100%;
+    }
+    &-camera{
+      position: absolute;
+      opacity: 1;
+      width: 150rem/@basenumber;
+      height: 130rem/@basenumber;
+      right: 12rem/@basenumber;
+      bottom: 6rem/@basenumber;
+      background: url('../img/canvas-1-camera.png');
+      background-size: 100% 100%;
+    }
+
+  }
+  .second-scene{
+    z-index: 9;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    &-container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-canvas{
+      width: 632rem/@basenumber;
+      height: 414rem/@basenumber;
+      background: url('../img/canvas-2.png');
+      background-size: 100% 100%;
+    }
+  }
+  .third-scene{
+    z-index: 8;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    &-container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-canvas{
+      width: 632rem/@basenumber;
+      height: 414rem/@basenumber;
+      background: url('../img/canvas-3.png');
+      background-size: 100% 100%;
+    }
+  }
+  .fourth-scene{
+    z-index: 7;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    &-container{
+       width: 100%;
+       height: 100%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+     }
+    &-canvas{
+       width: 632rem/@basenumber;
+       height: 414rem/@basenumber;
+       background: url('../img/canvas-4.png');
+       background-size: 100% 100%;
+     }
+   }
+  .fifth-scene{
+    z-index: 6;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    &-container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-canvas{
+      width: 632rem/@basenumber;
+      height: 414rem/@basenumber;
+      background: url('../img/canvas-5.png');
+      background-size: 100% 100%;
+    }
+  }
+  .sixth-scene{
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    &-container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-canvas{
+      width: 632rem/@basenumber;
+      height: 414rem/@basenumber;
+      background: url('../img/canvas-6.png');
+      background-size: 100% 100%;
+    }
+  }
+  .seventh-scene{
+    z-index: 4;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    &-container{
+       width: 100%;
+       height: 100%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+     }
+    &-canvas{
+       width: 632rem/@basenumber;
+       height: 414rem/@basenumber;
+       background: url('../img/canvas-7.png');
+       background-size: 100% 100%;
+     }
+   }
+  .eighth-scene{
+    z-index: 3;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    &-container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-canvas{
+      width: 632rem/@basenumber;
+      height: 414rem/@basenumber;
+      background: url('../img/canvas-8.png');
+      background-size: 100% 100%;
+    }
+  }
+}
+
+.eighth-scene-canvas-btn-1{
+  display: none;
+  position: absolute;
+  width: 186rem/@basenumber;
+  height: 37rem/@basenumber;
+  background: url("../img/canvas-8-btn-1.png");
+  background-size: 100% 100%;
+  bottom: 142rem/@basenumber;
+  left: 50%;
+  margin-left: -93rem/@basenumber;
+  z-index: 999;
+}
+.eighth-scene-canvas-btn-2{
+  display: none;
+  position: absolute;
+  width: 186rem/@basenumber;
+  height: 37rem/@basenumber;
+  background: url("../img/canvas-8-btn-2.png");
+  background-size: 100% 100%;
+  bottom: 88rem/@basenumber;
+  left: 50%;
+  margin-left: -93rem/@basenumber;
+  z-index: 999;
+}
+
+.mask-container{
+  display: none;
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .mask{
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.6;
+  }
+  .share{
+    position: absolute;
+    top: 12rem/@basenumber;
+    right: 35rem/@basenumber;
+    width: 151rem/@basenumber;
+    height: 162rem/@basenumber;
+    background: url('../img/share-btn.png');
+    background-size: 100% 100%;
+  }
+}
+.btn-show{
+  display: block !important;
+  animation: opacityIn 2s ease-out 1s 1;
+  animation-fill-mode: both;
+}
+
+.mask-container-show{
+  display: block;
+  animation: opacityIn 1s ease-out 0.3s 1;
+  animation-fill-mode: both;
+}
