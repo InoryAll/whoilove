@@ -16,6 +16,28 @@ body {
 body {
   perspective: 5000px;
 }
+@keyframes slideDownIn {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  33.33% {
+    opacity: 0.33;
+    height: 0.419958rem;
+  }
+  66.66% {
+    opacity: 0.66;
+    height: 0.839916rem;
+  }
+  99.99% {
+    opacity: 0.99;
+    height: 1.259874rem;
+  }
+  100% {
+    opacity: 1;
+    height: 1.26rem;
+  }
+}
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -132,6 +154,14 @@ body {
   animation: opacityIn 2s linear 0s 1;
   animation-fill-mode: both;
   transform: translateZ(100px);
+}
+.eighth-scene-canvas-content-change {
+  animation: slideDownIn 2s linear 0.3s 1;
+  animation-fill-mode: both;
+}
+.eighth-scene-canvas-content-back {
+  animation: opacityOut 2s linear 0.3s 1;
+  animation-fill-mode: both;
 }
 .loading {
   display: flex;
@@ -403,10 +433,22 @@ body {
   align-items: center;
 }
 .scene-container .eighth-scene-canvas {
+  position: relative;
   width: 14.22rem;
   height: 9.315rem;
   background: url('../img/canvas-8.png');
   background-size: 100% 100%;
+}
+.scene-container .eighth-scene-canvas-content {
+  position: absolute;
+  width: 7.65rem;
+  height: 1.26rem;
+  top: 1.7325rem;
+  left: 50%;
+  opacity: 0;
+  margin-left: -3.825rem;
+  background: url('../img/canvas-8-content.png');
+  background-size: 7.65rem 1.26rem;
 }
 .eighth-scene-canvas-btn-1 {
   display: none;
