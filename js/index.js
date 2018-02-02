@@ -104,12 +104,14 @@ Zepto(function ($) {
                 deltaX = endPosition.x - startPosition.x;
                 deltaY = endPosition.y - startPosition.y;
                 moveLength = Math.sqrt(Math.pow(Math.abs(deltaX), 2) + Math.pow(Math.abs(deltaY), 2));
+                e.preventDefault();
             }).bind('touchend', function(e){
                 if(deltaY < -100) {
                     _this.changeNextPage();
                 } else if (deltaY > 100) {
                     _this.changePrevPage();
                 }
+                e.preventDefault();
             });
         },
         bindRowTouchEvent: function () {
@@ -134,11 +136,12 @@ Zepto(function ($) {
                 deltaY = endPosition.y - startPosition.y;
                 moveLength = Math.sqrt(Math.pow(Math.abs(deltaX), 2) + Math.pow(Math.abs(deltaY), 2));
             }).bind('touchend', function(e){
-                if(deltaX < -100) {
+                if(deltaY < -100) {
                     _this.changeNextPage();
-                } else if (deltaX > 100) {
+                } else if (deltaY > 100) {
                     _this.changePrevPage();
                 }
+                return false;
             });
         },
         initPage: function () {
