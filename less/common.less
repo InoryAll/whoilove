@@ -21,6 +21,29 @@ body{
   perspective: 5000px;
 }
 
+@keyframes slideDownIn {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  33.33% {
+    opacity: 0.33;
+    height: 0.3333*56*108/75rem/@basenumber;
+  }
+  66.66% {
+    opacity: 0.66;
+    height: 0.6666*56*108/75rem/@basenumber;
+  }
+  99.99% {
+    opacity: 0.99;
+    height: 0.9999*56*108/75rem/@basenumber;
+  }
+  100% {
+    opacity: 1;
+    height: 56*108/75rem/@basenumber;
+  }
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -122,6 +145,7 @@ body{
     animation: flipBook 2s linear 0.3s 1;
     animation-fill-mode: both;
   }
+
 }
 .index-back{
   .first-scene-camera{
@@ -141,6 +165,7 @@ body{
     animation: flipBookBack 2s linear 0.3s 1;
     animation-fill-mode: both;
   }
+
 }
 .canvas-seal-do-change{
   animation: scaleToShow 1s linear 0s 1;
@@ -152,6 +177,15 @@ body{
   animation-fill-mode: both;
   transform:translateZ(100px);
 }
+.eighth-scene-canvas-content-change{
+  animation: slideDownIn 2s linear 0.3s 1;
+  animation-fill-mode: both;
+}
+.eighth-scene-canvas-content-back{
+  animation: opacityOut 2s linear 0.3s 1;
+  animation-fill-mode: both;
+}
+
 
 .loading{
   display: flex;
@@ -422,10 +456,22 @@ body{
       align-items: center;
     }
     &-canvas{
+      position: relative;
       width: 632*108/75rem/@basenumber;
       height: 414*108/75rem/@basenumber;
       background: url('../img/canvas-8.png');
       background-size: 100% 100%;
+    }
+    &-canvas-content{
+      position: absolute;
+      width: 340*108/75rem/@basenumber;
+      height: 56*108/75rem/@basenumber;
+      top: 77*108/75rem/@basenumber;
+      left: 50%;
+      opacity: 0;
+      margin-left: -170*108/75rem/@basenumber;
+      background: url('../img/canvas-8-content.png');
+      background-size: 340*108/75rem/@basenumber 56*108/75rem/@basenumber;
     }
   }
 }
