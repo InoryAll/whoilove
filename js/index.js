@@ -15,6 +15,7 @@ Zepto(function ($) {
             mask: $('#mask'),
             music: $('#music'),
             musicContainer: $('#music-container'),
+            eighthSceneContent: $('#eighth-scene-canvas-content'),
         },
         pages: [ $('#first'), $('#second'), $('#third'), $('#fourth'), $('#fifth'), $('#sixth'), $('#seventh'), $('#eighth') ],
         initPaginator: function () {
@@ -55,21 +56,23 @@ Zepto(function ($) {
         },
         bindMusicEvent: function () {
             var _this = this;
+            _this.items.musicContainer.on('click', function () {
+                if (_this.isOn === true) {
+                    _this.items.music[0].pause();
+                    _this.isOn = false;
+                    _this.items.musicContainer.removeClass('music-on');
+                } else {
+                    _this.items.music[0].play();
+                    _this.isOn = true;
+                    _this.items.musicContainer.addClass('music-on');
+                }
+            });
             _this.items.musicContainer.addClass('music-on');
             // 单独适配微信端的自动播放
             document.addEventListener("WeixinJSBridgeReady", function () {
                 _this.items.music[0].play();
             }, false);
-            _this.items.musicContainer.on('click', function () {
-                if (_this.isOn === true) {
-                    _this.items.music[0].pause();
-                    _this.items.musicContainer.removeClass('music-on');
-                } else {
-                    _this.items.music[0].play();
-                    _this.items.musicContainer.addClass('music-on');
-                }
-                _this.isOn = !_this.isOn;
-            });
+            _this.items.music[0].play();
         },
         bindMaskEvent: function () {
             var _this = this;
@@ -174,6 +177,7 @@ Zepto(function ($) {
             if (_this.currentPage === _this.pages.length-2) {
                 _this.items.goDownBtn.removeClass('btn-show').hide();
                 _this.items.doItBtn.removeClass('btn-show').hide();
+                _this.items.eighthSceneContent.removeClass('eighth-scene-canvas-content-change').addClass('eighth-scene-canvas-content-back');
             }
         },
         changeNextPage: function () {
@@ -195,6 +199,7 @@ Zepto(function ($) {
                 _this.items.sceneChange.removeClass('scene-do-change').hide();
                 _this.items.goDownBtn.addClass('btn-show');
                 _this.items.doItBtn.addClass('btn-show');
+                _this.items.eighthSceneContent.removeClass('eighth-scene-canvas-content-back').addClass('eighth-scene-canvas-content-change');
             }
         },
     };
