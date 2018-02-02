@@ -138,6 +138,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 99999;
   width: 100%;
   height: 100%;
   background: url('../img/direction-bg.png');
@@ -449,9 +450,9 @@ body {
 .mask-container .share {
   position: absolute;
   top: 0.27rem;
-  right: 0.7875rem;
-  width: 3.3975rem;
-  height: 3.645rem;
+  left: 0.7875rem;
+  width: 4.23rem;
+  height: 3.5325rem;
   background: url('../img/share-btn.png');
   background-size: 100% 100%;
 }
@@ -468,6 +469,7 @@ body {
 @media screen and (orientation: landscape) {
   .loading {
     display: flex;
+    z-index: 99999;
     justify-content: center;
     align-items: center;
     flex-direction: column;
